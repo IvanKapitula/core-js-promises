@@ -22,7 +22,7 @@ function getPromise(number) {
     if (number > 0) {
       resolve(number);
     } else {
-      reject(new Error('promise that will be rejected'));
+      reject(number);
     }
   });
 }
@@ -39,8 +39,14 @@ function getPromise(number) {
  * Promise.resolve('success') => promise that will be fulfilled with 'success' value
  * Promise.reject('fail')     => promise that will be fulfilled with 'fail' value
  */
-function getPromiseResult(/* source */) {
-  throw new Error('Not implemented');
+function getPromiseResult(source) {
+  return source
+    .then(() => {
+      return 'success';
+    })
+    .catch(() => {
+      return 'fail';
+    });
 }
 
 /**
