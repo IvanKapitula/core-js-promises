@@ -63,7 +63,7 @@ function getPromiseResult(source) {
  * [Promise.reject(1), Promise.reject(2), Promise.reject(3)]    => Promise rejected
  */
 function getFirstResolvedPromiseResult(promises) {
-  return Promise.any(promises);
+  return Promise.race(promises);
 }
 
 /**
@@ -86,7 +86,7 @@ function getFirstResolvedPromiseResult(promises) {
  * [promise3, promise4, promise6] => Promise rejected with 6
  */
 function getFirstPromiseResult(promises) {
-  return Promise.race(promises);
+  return Promise.any(promises);
 }
 
 /**
