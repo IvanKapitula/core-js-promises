@@ -142,8 +142,12 @@ function getAllResult(promises) {
  * [promise1, promise4, promise3] => Promise.resolved('104030')
  * [promise1, promise4, promise3, promise2] => Promise.resolved('10403020')
  */
-function queuPromises(/* promises */) {
-  throw new Error('Not implemented');
+function queuPromises(promises) {
+  return promises.reduce(function hi(pie, prom) {
+    return pie.then((acc) => {
+      return prom.then((val) => acc + val.toString());
+    });
+  }, Promise.resolve(''));
 }
 
 module.exports = {
