@@ -19,7 +19,7 @@
  */
 function getPromise(number) {
   return new Promise((resolve, reject) => {
-    if (number > 0) {
+    if (number >= 0) {
       resolve(number);
     } else {
       reject(number);
