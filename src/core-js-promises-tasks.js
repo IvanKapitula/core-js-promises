@@ -63,7 +63,13 @@ function getPromiseResult(source) {
  * [Promise.reject(1), Promise.reject(2), Promise.reject(3)]    => Promise rejected
  */
 function getFirstResolvedPromiseResult(promises) {
-  return Promise.race(promises);
+  const result = promises.map(function hi(prom) {
+    return prom.then(
+      (val) => val,
+      () => new Promise(() => {})
+    );
+  });
+  return Promise.race(result);
 }
 
 /**
